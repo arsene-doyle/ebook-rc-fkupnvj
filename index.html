@@ -243,6 +243,9 @@ ul.formal-list li { margin-bottom: 8px; }
           <li><strong>Penulis:</strong> Syarif Rahman Hasibuan, SKM, MKM.</li>
           <li><strong>Institusi:</strong> Fakultas Kedokteran, UPN "Veteran" Jakarta.</li>
         </ul>
+        <div class="warning-box" style="border-color: var(--primary); background: var(--primary-light); color: var(--primary);">
+          <strong>Catatan Penggunaan:</strong> Aplikasi ini dikembangkan dalam konteks mata kuliah <i>Research Course</i> FK UPNVJ dan berfokus pada pemilihan <b>uji statistik bivariat</b>. Dikhususkan untuk mahasiswa tingkat 3 yang telah menyelesaikan RC3 dan RC4. Materi di luar cakupan tersebut tidak dibahas dalam aplikasi ini.
+        </div>
         <p>Aplikasi <i>StatGuide</i> mengintegrasikan substansi metodologi penelitian dengan algoritma <i>Decision Tree</i> untuk memastikan Anda terhindar dari kesalahan fatal dalam analisis data klinis.</p>
         <button class="btn-primary" onclick="openTab('petunjuk')" style="margin-top: 16px;">Baca Petunjuk Penggunaan &#x27A1;</button>
       </div>
@@ -778,7 +781,7 @@ const db = {
     req: ['Ordinal atau Numerik yang Gagal Normalitas'],
     spss: 'Analyze > Correlate > Bivariate > Spearman',
     examples: [
-      'Korelasi antara Tingkat Stres (Ringan/Sedang/Berat) dengan Kualitas Tidur pada Residen Bedah di RS Pendidikan Kota Surabaya',
+      'Korelasi antara Tingkat Stres (skor) dengan Kualitas Tidur pada Residen Bedah di RS Pendidikan Kota Surabaya',
       'Hubungan antara Derajat Keparahan Akne Vulgaris dengan Skor Kualitas Hidup Dermatologi (DLQI) pada Remaja di Klinik Kulit Kota Malang',
       'Korelasi antara Skor Kepatuhan Minum Obat (MMAS-8) dengan Skor Kontrol Asma (ACT) pada Pasien Asma Dewasa di Poliklinik Paru RS Tipe B Denpasar'
     ]
@@ -803,7 +806,7 @@ const dtTree = {
     q: 'Apa Tujuan Analisis pada penelitian Anda?',
     c: [
       {l: 'Membandingkan Kelompok (Uji Beda)', hint: 'Apakah ada perbedaan antar kelompok? Contoh: perbedaan rerata atau proporsi.', n: 'b_dep'},
-      {l: 'Melihat Hubungan/Korelasi (Asosiasi)', hint: 'Apakah dua variabel bergerak bersama? Tidak ada pembanding kelompok.', n: 'h_dep'},
+      {l: 'Melihat Hubungan (Asosiasi)', hint: 'Apakah dua variabel bergerak bersama? Tidak ada pembanding kelompok.', n: 'h_dep'},
       {l: 'Membuat Model Prediksi (Kausalitas)', hint: 'Variabel independen memprediksi outcome. Cari OR atau koefisien regresi.', n: 'p_dep'}
     ]
   },
