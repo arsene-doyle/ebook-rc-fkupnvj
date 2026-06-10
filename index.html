@@ -985,14 +985,34 @@ startTree();
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbzobAWqLW1L6EOJJBfRfQGyZ_AtrCExBGge13JvbG9ps9RxicF8UPXP4gJYpYbkuWH5/exec';
 let currentUser = {nama: '', nim: ''};
 
-function sendLog(aksi, detail) {
+/* Milestone tracker -- cegah duplikasi pengiriman */
+const milestoneReached = {
+  materi_selesai: false,
+  bagan_alur_dibuka: false,
+  decision_tree_dicoba: false,
+  cheat_sheet_dibuka: false
+};
+
+function sendLog(aksi, detail, milestone) {
   if (!currentUser.nama) return;
   fetch(GAS_URL, {
     method: 'POST',
     mode: 'no-cors',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({nama: currentUser.nama, nim: currentUser.nim, aksi: aksi, detail: detail || ''})
+    body: JSON.stringify({
+      nama: currentUser.nama,
+      nim: currentUser.nim,
+      aksi: aksi,
+      detail: detail || '',
+      milestone: milestone || ''
+    })
   }).catch(() => {});
+}
+
+function checkMilestone(key, aksi, detail) {
+  if (milestoneReached[key]) return; /* sudah pernah dikirim, skip */
+  milestoneReached[key] = true;
+  sendLog(aksi, detail, key);
 }
 
 function submitSplash() {
@@ -1005,7 +1025,7 @@ function submitSplash() {
   sessionStorage.setItem('sg-nama', nama);
   sessionStorage.setItem('sg-nim', nim);
   document.getElementById('splash').style.display = 'none';
-  sendLog('LOGIN', 'Masuk ke aplikasi');
+  sendLog('LOGIN', 'Masuk ke aplikasi', '');
 }
 
 (function() {
@@ -1014,11 +1034,29 @@ function submitSplash() {
   if (n && i) { currentUser = {nama: n, nim: i}; document.getElementById('splash').style.display = 'none'; }
 })();
 
-const _origOpenTab = openTab;
-openTab = function(tabId) { _origOpenTab(tabId); sendLog('NAVIGASI', tabId); };
+/* Patch unlockApp -- milestone materi selesai */
+const _origUnlockApp = unlockApp;
+unlockApp = function() {
+  _origUnlockApp();
+  checkMilestone('materi_selesai', 'MILESTONE', 'Lulus semua 4 kuis materi');
+};
 
+/* Patch openTab -- milestone bagan alur dan cheat sheet */
+const _origOpenTab = openTab;
+openTab = function(tabId) {
+  _origOpenTab(tabId);
+  sendLog('NAVIGASI', tabId, '');
+  if (tabId === 'alur') checkMilestone('bagan_alur_dibuka', 'MILESTONE', 'Membuka Bagan Alur');
+  if (tabId === 'tabel') checkMilestone('cheat_sheet_dibuka', 'MILESTONE', 'Membuka Cheat Sheet');
+};
+
+/* Patch showRes -- milestone decision tree dicoba */
 const _origShowRes = showRes;
-showRes = function(id) { _origShowRes(id); sendLog('HASIL_DT', id); };
+showRes = function(id) {
+  _origShowRes(id);
+  sendLog('HASIL_DT', id, '');
+  checkMilestone('decision_tree_dicoba', 'MILESTONE', 'Menyelesaikan Decision Tree: ' + id);
+};
 </script>
 </body>
 </html>
