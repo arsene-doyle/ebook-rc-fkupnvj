@@ -6,9 +6,6 @@
 <title>StatGuide FK UPNVJ -- Buku Saku Digital</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   SISTEM DESAIN MODERN ACADEMIC BENTO
-   ============================================================ */
 :root {
   --primary: #1E40AF;
   --primary-hover: #1E3A8A;
@@ -29,7 +26,6 @@
   --radius-lg: 24px;
   --font: 'Plus Jakarta Sans', sans-serif;
 }
-
 body.dark-mode {
   --bg-main: #1E2535;
   --bg-soft: #151C2C;
@@ -39,68 +35,55 @@ body.dark-mode {
   --primary-light: #1E2E50;
   --accent-light: #0D2E20;
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: var(--font); background: var(--bg-soft); color: var(--text-dark); font-size: 15px; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; transition: background 0.3s, color 0.3s; }
-
 b, strong { font-weight: 800; color: var(--primary); }
 body.dark-mode b, body.dark-mode strong { color: #60A5FA; }
 i, em { font-style: italic; }
 
-/* NAVIGASI & HEADER */
 .topnav { background: var(--bg-main); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-sm); transition: background 0.3s, border-color 0.3s; }
 .topnav-inner { max-width: 1100px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
 .logo-area { display: flex; align-items: center; gap: 12px; }
 .logo-icon { background: linear-gradient(135deg, var(--primary), var(--primary-hover)); color: white; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: 800; font-size: 18px; box-shadow: var(--shadow-sm); }
 .logo-text { font-weight: 800; font-size: 18px; color: var(--primary); letter-spacing: -0.02em; }
-
 .nav-menu { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; flex: 1; }
 .nav-btn { background: transparent; border: none; color: var(--text-muted); font-family: var(--font); font-size: 14px; font-weight: 700; padding: 8px 16px; border-radius: var(--radius-sm); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
 .nav-btn:hover:not(:disabled) { background: var(--primary-light); color: var(--primary); }
 .nav-btn.active { background: var(--primary); color: white; box-shadow: var(--shadow-sm); }
 .nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
 .topnav-actions { display: flex; align-items: center; gap: 8px; }
 .btn-reset { background: white; border: 1px solid var(--danger); color: var(--danger); padding: 8px 16px; border-radius: var(--radius-sm); cursor: pointer; font-weight: 700; font-size: 13px; font-family: var(--font); transition: all 0.2s; }
 .btn-reset:hover { background: var(--danger-bg); box-shadow: var(--shadow-sm); }
 .btn-darkmode { background: var(--bg-soft); border: 1px solid var(--border); color: var(--text-muted); padding: 8px 12px; border-radius: var(--radius-sm); cursor: pointer; font-weight: 700; font-size: 13px; font-family: var(--font); transition: all 0.2s; }
 .btn-darkmode:hover { border-color: var(--primary); color: var(--primary); }
 
-/* KONTEN UTAMA */
 .main-content { max-width: 1100px; margin: 0 auto; padding: 40px 24px; width: 100%; flex: 1; }
 .tab-pane { display: none; animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
 .tab-pane.active { display: block; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-
 .page-header { margin-bottom: 32px; }
 .page-title { font-size: 28px; font-weight: 800; color: var(--primary); margin-bottom: 8px; letter-spacing: -0.02em; }
 .page-subtitle { font-size: 15px; color: var(--text-muted); }
 
-/* KOTAK KONTEN (BENTO CARD) */
 .content-box { background: var(--bg-main); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 32px; box-shadow: var(--shadow-md); margin-bottom: 24px; transition: transform 0.2s, box-shadow 0.2s, background 0.3s, border-color 0.3s; }
 .content-box:hover { box-shadow: 0 15px 20px -5px rgba(15,23,42,0.1); transform: translateY(-2px); border-color: #CBD5E1; }
 .content-box h3 { font-size: 18px; font-weight: 800; color: var(--primary); margin-bottom: 12px; }
-
 ul.formal-list { margin-left: 20px; margin-bottom: 16px; color: var(--text-dark); }
 ul.formal-list li { margin-bottom: 8px; }
 
-/* LAYOUT MATERI BERGAMBAR (WIZARD) */
 .wizard-step { display: none; }
 .wizard-step.active { display: block; animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
 .wizard-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; border-bottom: 2px solid var(--bg-soft); padding-bottom: 16px; }
 .step-badge { background: var(--primary); color: white; padding: 6px 12px; border-radius: var(--radius-sm); font-weight: 800; font-size: 14px; letter-spacing: 0.05em; }
 .step-title { font-size: 20px; font-weight: 800; color: var(--text-dark); }
-
 .materi-layout { display: grid; grid-template-columns: 1fr 300px; gap: 32px; align-items: start; }
 .materi-text p { margin-bottom: 16px; text-align: justify; }
 .materi-img { width: 100%; height: auto; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: var(--shadow-sm); object-fit: cover; transition: transform 0.3s; }
 .materi-img:hover { transform: scale(1.02); }
 
-/* KOTAK PERINGATAN */
 .warning-box { border-left: 4px solid var(--danger); padding: 16px 20px; background-color: var(--danger-bg); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: 24px; font-size: 14px; color: #991B1B; }
 .warning-box strong { color: var(--danger); }
 
-/* BENTUK KATEGORIK VS NUMERIK */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
 .box-kat { border: 2px solid var(--primary); padding: 20px; border-radius: var(--radius-sm); background: var(--bg-main); transition: all 0.2s; }
 .box-kat:hover { background: var(--primary-light); transform: translateY(-2px); }
@@ -109,7 +92,6 @@ ul.formal-list li { margin-bottom: 8px; }
 .box-num:hover { background: var(--accent-light); transform: translateY(-2px); }
 .box-num h4 { color: var(--accent); margin-bottom: 8px; font-weight: 800; font-size: 16px; }
 
-/* TABEL PASANGAN PARAMETRIK-NONPARAMETRIK DI MATERI */
 .pairing-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 16px; border-radius: var(--radius-sm); overflow: hidden; box-shadow: var(--shadow-sm); }
 .pairing-table th { background: var(--primary); color: white; padding: 12px 16px; text-align: left; font-weight: 800; font-size: 13px; }
 .pairing-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--bg-main); color: var(--text-dark); }
@@ -118,7 +100,6 @@ ul.formal-list li { margin-bottom: 8px; }
 .pairing-table .td-par { font-weight: 700; color: var(--primary); }
 .pairing-table .td-np { font-weight: 700; color: var(--accent); }
 
-/* KUIS MINI */
 .quiz-box { background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; margin-top: 24px; }
 .quiz-q { font-weight: 800; font-size: 16px; margin-bottom: 16px; color: var(--primary); }
 .quiz-opts { display: flex; flex-direction: column; gap: 12px; }
@@ -128,7 +109,6 @@ ul.formal-list li { margin-bottom: 8px; }
 .btn-quiz.wrong { background: var(--danger-bg); border-color: var(--danger); color: var(--danger); }
 .btn-quiz:disabled { cursor: not-allowed; }
 
-/* BAGAN ALUR (CSS TREE) */
 .tree-container { text-align: center; overflow-x: auto; padding: 20px 0; }
 .tree ul { padding-top: 20px; position: relative; transition: all 0.5s; display: flex; justify-content: center; gap: 10px; }
 .tree li { float: left; text-align: center; list-style-type: none; position: relative; padding: 20px 5px 0 5px; }
@@ -144,15 +124,11 @@ ul.formal-list li { margin-bottom: 8px; }
 .tree-node:hover { transform: scale(1.05); box-shadow: var(--shadow-md); }
 .tree-node.result { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
 
-/* DECISION TREE INTERACTIVE */
 .dt-card { max-width: 750px; margin: 0 auto; text-align: center; }
-
-/* Progress & Breadcrumb */
 .dt-progress { font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; text-align: center; letter-spacing: 0.02em; }
 .dt-breadcrumb { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-bottom: 20px; min-height: 28px; }
 .bc-chip { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary); padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
 .bc-chip:hover { background: var(--primary); color: white; }
-
 .dt-q { font-size: 24px; font-weight: 800; color: var(--primary); margin-bottom: 32px; line-height: 1.4; letter-spacing: -0.01em; }
 .dt-choices { display: grid; gap: 16px; }
 .dt-btn { background: var(--bg-main); border: 2px solid var(--border); padding: 20px 24px; border-radius: var(--radius-md); font-family: var(--font); cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-sm); color: var(--text-dark); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
@@ -161,7 +137,6 @@ ul.formal-list li { margin-bottom: 8px; }
 .dt-btn-hint { font-size: 12px; font-weight: 500; color: var(--text-muted); max-width: 400px; line-height: 1.4; }
 .dt-btn:hover .dt-btn-hint { color: var(--primary); opacity: 0.8; }
 
-/* RESULT CARD */
 .res-box { background: var(--bg-main); border: 2px solid var(--accent); border-radius: var(--radius-md); overflow: hidden; text-align: left; box-shadow: var(--shadow-md); }
 .res-header { background: linear-gradient(135deg, var(--accent), #047857); color: white; padding: 32px; }
 .res-title { font-size: 32px; font-weight: 800; margin-top: 8px; letter-spacing: -0.02em; }
@@ -172,13 +147,11 @@ ul.formal-list li { margin-bottom: 8px; }
 .btn-primary { background: var(--primary); color: white; border: none; padding: 14px 28px; border-radius: var(--radius-sm); font-family: var(--font); font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 16px; transition: all 0.2s; box-shadow: 0 4px 6px rgba(30,64,175,0.2); display: inline-flex; align-items: center; justify-content: center; }
 .btn-primary:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(30,64,175,0.3); }
 
-/* CONTOH JUDUL */
 .examples-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 8px; }
 .example-card { background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; font-size: 13px; color: var(--text-dark); line-height: 1.5; transition: all 0.2s; }
 .example-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
 .example-card-num { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.05em; margin-bottom: 6px; }
 
-/* TABLE */
 .table-controls { margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
 .search-input { padding: 12px 16px; border: 1px solid var(--border); font-family: var(--font); font-size: 14px; width: 100%; max-width: 320px; border-radius: var(--radius-sm); transition: all 0.2s; outline: none; background: var(--bg-main); color: var(--text-dark); }
 .search-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light); }
@@ -188,14 +161,12 @@ ul.formal-list li { margin-bottom: 8px; }
 .data-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); color: var(--text-dark); }
 .data-table tr:hover td { background-color: var(--primary-light); }
 
-/* PRINT STYLESHEET */
 @media print {
   .topnav, .tab-pane:not(#tabel), .table-controls, .btn-cetak { display: none !important; }
   #tabel { display: block !important; }
   .main-content { padding: 0; }
   .data-table { box-shadow: none; }
 }
-
 @media (max-width: 768px) {
   .materi-layout { grid-template-columns: 1fr; }
   .grid-2 { grid-template-columns: 1fr; }
@@ -203,9 +174,52 @@ ul.formal-list li { margin-bottom: 8px; }
   .res-title { font-size: 26px; }
   .examples-grid { grid-template-columns: 1fr; }
 }
+
+/* SPLASH SCREEN */
+.splash-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(15,23,42,0.7);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.splash-card {
+  background: var(--bg-main);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  max-width: 480px; width: 100%;
+  box-shadow: 0 25px 50px rgba(15,23,42,0.3);
+  animation: fadeIn 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.splash-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+.splash-logo .logo-icon { width: 44px; height: 44px; font-size: 22px; }
+.splash-logo .logo-text { font-size: 22px; }
+.splash-title { font-size: 20px; font-weight: 800; color: var(--text-dark); margin-bottom: 6px; }
+.splash-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; }
+.splash-input { width: 100%; padding: 14px 16px; border: 2px solid var(--border); border-radius: var(--radius-sm); font-family: var(--font); font-size: 15px; font-weight: 600; margin-bottom: 14px; outline: none; transition: border-color 0.2s; background: var(--bg-main); color: var(--text-dark); }
+.splash-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light); }
+.splash-input::placeholder { color: var(--text-muted); font-weight: 400; }
+.splash-error { font-size: 13px; color: var(--danger); margin-bottom: 12px; display: none; }
+.splash-note { font-size: 12px; color: var(--text-muted); margin-top: 14px; text-align: center; line-height: 1.5; }
 </style>
 </head>
 <body>
+
+<!-- SPLASH SCREEN -->
+<div class="splash-overlay" id="splash">
+  <div class="splash-card">
+    <div class="splash-logo">
+      <div class="logo-icon">&#931;</div>
+      <div class="logo-text">StatGuide</div>
+    </div>
+    <div class="splash-title">Selamat Datang</div>
+    <div class="splash-sub">Buku Saku Digital Uji Statistik Bivariat<br>FK UPN "Veteran" Jakarta &bull; Research Course</div>
+    <input type="text" id="splash-nama" class="splash-input" placeholder="Nama Lengkap" maxlength="100">
+    <input type="text" id="splash-nim" class="splash-input" placeholder="NIM (contoh: 12345678)" maxlength="20">
+    <div class="splash-error" id="splash-error">Nama dan NIM wajib diisi sebelum melanjutkan.</div>
+    <button class="btn-primary" onclick="submitSplash()" style="width:100%; justify-content:center;">Masuk ke Aplikasi &#x27A1;</button>
+    <div class="splash-note">Data Anda (nama dan NIM) dicatat untuk keperluan monitoring penggunaan media pembelajaran ini.</div>
+  </div>
+</div>
 
 <nav class="topnav">
   <div class="topnav-inner">
@@ -244,7 +258,7 @@ ul.formal-list li { margin-bottom: 8px; }
           <li><strong>Institusi:</strong> Fakultas Kedokteran, UPN "Veteran" Jakarta.</li>
         </ul>
         <div class="warning-box" style="border-color: var(--primary); background: var(--primary-light); color: var(--primary);">
-          <strong>Catatan Penggunaan:</strong> Aplikasi ini dikembangkan dalam konteks mata kuliah <i>Research Course</i> FK UPNVJ dan berfokus pada pemilihan <b>uji statistik bivariat</b>. Khususnya untuk mahasiswa tingkat 3 yang telah menyelesaikan kelas RC3 dan RC4. Materi di luar cakupan tersebut tidak dibahas dalam aplikasi ini.
+          <strong>Catatan Penggunaan:</strong> Aplikasi ini dikembangkan dalam konteks mata kuliah <i>Research Course</i> FK UPNVJ dan berfokus pada pemilihan <b>uji statistik bivariat</b>. Dikhususkan untuk mahasiswa tingkat 3 yang telah menyelesaikan RC3 dan RC4. Materi di luar cakupan tersebut tidak dibahas dalam aplikasi ini.
         </div>
         <p>Aplikasi <i>StatGuide</i> mengintegrasikan substansi metodologi penelitian dengan algoritma <i>Decision Tree</i> untuk memastikan Anda terhindar dari kesalahan fatal dalam analisis data klinis.</p>
         <button class="btn-primary" onclick="openTab('petunjuk')" style="margin-top: 16px;">Baca Petunjuk Penggunaan &#x27A1;</button>
@@ -305,7 +319,6 @@ ul.formal-list li { margin-bottom: 8px; }
       </div>
     </div>
 
-    <!-- STEP 2 -- Interval dan Rasio dipisah -->
     <div class="content-box wizard-step" id="step-2">
       <div class="wizard-header">
         <div class="step-badge">Halaman 2 / 4</div>
@@ -340,7 +353,7 @@ ul.formal-list li { margin-bottom: 8px; }
         <div class="quiz-q">Kuis Validasi: Variabel "Indeks Massa Tubuh (kg/m2)" adalah jenis skala...</div>
         <div class="quiz-opts">
           <button class="btn-quiz" onclick="checkWizard(2, false, this)">A. Kategorik (Ordinal)</button>
-          <button class="btn-quiz" onclick="checkWizard(2, true, this)">B. Numerik (Interval)</button>
+          <button class="btn-quiz" onclick="checkWizard(2, true, this)">B. Numerik (Rasio)</button>
         </div>
       </div>
     </div>
@@ -369,7 +382,6 @@ ul.formal-list li { margin-bottom: 8px; }
       </div>
     </div>
 
-    <!-- STEP 4 -- Tabel 5 pasangan parametrik/nonparametrik ditambahkan -->
     <div class="content-box wizard-step" id="step-4">
       <div class="wizard-header">
         <div class="step-badge">Halaman 4 / 4</div>
@@ -393,31 +405,11 @@ ul.formal-list li { margin-bottom: 8px; }
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>2 kelompok independen</td>
-                <td class="td-par">Independent T-Test</td>
-                <td class="td-np">Mann-Whitney</td>
-              </tr>
-              <tr>
-                <td>2 kelompok berpasangan</td>
-                <td class="td-par">Paired T-Test</td>
-                <td class="td-np">Wilcoxon</td>
-              </tr>
-              <tr>
-                <td>&gt;2 kelompok independen</td>
-                <td class="td-par">One-Way ANOVA</td>
-                <td class="td-np">Kruskal-Wallis</td>
-              </tr>
-              <tr>
-                <td>&gt;2 kelompok berpasangan</td>
-                <td class="td-par">Repeated Measures ANOVA</td>
-                <td class="td-np">Friedman</td>
-              </tr>
-              <tr>
-                <td>Korelasi 2 variabel numerik</td>
-                <td class="td-par">Pearson</td>
-                <td class="td-np">Spearman</td>
-              </tr>
+              <tr><td>2 kelompok independen</td><td class="td-par">Independent T-Test</td><td class="td-np">Mann-Whitney</td></tr>
+              <tr><td>2 kelompok berpasangan</td><td class="td-par">Paired T-Test</td><td class="td-np">Wilcoxon</td></tr>
+              <tr><td>&gt;2 kelompok independen</td><td class="td-par">One-Way ANOVA</td><td class="td-np">Kruskal-Wallis</td></tr>
+              <tr><td>&gt;2 kelompok berpasangan</td><td class="td-par">Repeated Measures ANOVA</td><td class="td-np">Friedman</td></tr>
+              <tr><td>Korelasi 2 variabel numerik</td><td class="td-par">Pearson</td><td class="td-np">Spearman</td></tr>
             </tbody>
           </table>
         </div>
@@ -451,14 +443,8 @@ ul.formal-list li { margin-bottom: 8px; }
                     <li>
                       <div class="tree-node">Numerik</div>
                       <ul>
-                        <li>
-                          <div class="tree-node">Independen</div>
-                          <ul><li><div class="tree-node result">Ind. T-Test /<br>Mann-Whitney</div></li></ul>
-                        </li>
-                        <li>
-                          <div class="tree-node">Berpasangan</div>
-                          <ul><li><div class="tree-node result">Paired T-Test /<br>Wilcoxon</div></li></ul>
-                        </li>
+                        <li><div class="tree-node">Independen</div><ul><li><div class="tree-node result">Ind. T-Test /<br>Mann-Whitney</div></li></ul></li>
+                        <li><div class="tree-node">Berpasangan</div><ul><li><div class="tree-node result">Paired T-Test /<br>Wilcoxon</div></li></ul></li>
                       </ul>
                     </li>
                     <li>
@@ -470,14 +456,8 @@ ul.formal-list li { margin-bottom: 8px; }
                 <li>
                   <div class="tree-node">Hubungan /<br>Prediksi</div>
                   <ul>
-                    <li>
-                      <div class="tree-node">Korelasi</div>
-                      <ul><li><div class="tree-node result">Pearson /<br>Spearman</div></li></ul>
-                    </li>
-                    <li>
-                      <div class="tree-node">Prediksi</div>
-                      <ul><li><div class="tree-node result">Regresi Linear /<br>Regresi Logistik</div></li></ul>
-                    </li>
+                    <li><div class="tree-node">Korelasi</div><ul><li><div class="tree-node result">Pearson /<br>Spearman</div></li></ul></li>
+                    <li><div class="tree-node">Prediksi</div><ul><li><div class="tree-node result">Regresi Linear /<br>Regresi Logistik</div></li></ul></li>
                   </ul>
                 </li>
               </ul>
@@ -497,7 +477,6 @@ ul.formal-list li { margin-bottom: 8px; }
       <div id="dt-progress" class="dt-progress"></div>
       <div id="dt-breadcrumb" class="dt-breadcrumb"></div>
       <div id="dt-question-area" class="content-box" style="padding: 40px 32px;"></div>
-      
       <div class="res-box" id="dt-result-card" style="display:none;">
         <div class="res-header">
           <div style="font-size: 14px; font-weight: 800; letter-spacing: 1px; opacity: 0.9;">REKOMENDASI UJI BAKU</div>
@@ -557,9 +536,7 @@ ul.formal-list li { margin-bottom: 8px; }
 </main>
 
 <script>
-/* ============================================================
-   DARK MODE
-   ============================================================ */
+/* DARK MODE */
 function toggleDark() {
   const body = document.body;
   body.classList.toggle('dark-mode');
@@ -577,9 +554,7 @@ if (localStorage.getItem('statguide-dark')) {
   document.getElementById('btn-dm').textContent = '\u2600\uFE0F Light';
 }
 
-/* ============================================================
-   LOGIKA NAVIGASI TAB
-   ============================================================ */
+/* NAVIGASI TAB */
 function openTab(tabId) {
   document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
@@ -588,14 +563,11 @@ function openTab(tabId) {
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-/* ============================================================
-   LOGIKA KUIS BERJENJANG (MATERI WIZARD)
-   ============================================================ */
+/* KUIS WIZARD */
 function checkWizard(stepNum, isCorrect, btnEl) {
   const container = document.getElementById('step-' + stepNum);
   const buttons = container.querySelectorAll('.btn-quiz');
   buttons.forEach(b => b.disabled = true);
-  
   if (isCorrect) {
     btnEl.classList.add('correct');
     btnEl.innerHTML += ' (Benar)';
@@ -632,175 +604,107 @@ function unlockApp() {
   startTree();
 }
 
-/* ============================================================
-   DATABASE UJI STATISTIK (15 ENTRI LENGKAP)
-   ============================================================ */
+/* DATABASE 15 UJI */
 const db = {
   'Chi-Square': {
     desc: 'Bila digunakan sebagai <b>Uji Beda</b>: Untuk membandingkan persentase antar kelompok independen. Bila digunakan sebagai <b>Uji Hubungan</b>: Untuk melihat asosiasi dua variabel kategorik.',
     req: ['Skala Kategorik', 'Independen / Sejajar', 'Expected count &lt;5 maksimal 20%'],
     spss: 'Analyze > Descriptive Statistics > Crosstabs > Statistics: Chi-Square',
-    examples: [
-      'Perbedaan Proporsi Kejadian Infeksi Saluran Kemih antara Pasien dengan Kateter Foley dan Kateter Suprapubik di RS Tipe A Bandung',
-      'Hubungan Kebiasaan Sarapan dengan Konsentrasi Belajar pada Siswa SMA di Kecamatan Kebayoran Baru Jakarta Selatan',
-      'Perbedaan Prevalensi Gangguan Tidur pada Mahasiswa Fakultas Kedokteran, Farmasi, dan Kesehatan Masyarakat Universitas X'
-    ]
+    examples: ['Perbedaan Proporsi Kejadian Infeksi Saluran Kemih antara Pasien dengan Kateter Foley dan Kateter Suprapubik di RS Tipe A Bandung','Hubungan Kebiasaan Sarapan dengan Konsentrasi Belajar pada Siswa SMA di Kecamatan Kebayoran Baru Jakarta Selatan','Perbedaan Prevalensi Gangguan Tidur pada Mahasiswa Fakultas Kedokteran, Farmasi, dan Kesehatan Masyarakat Universitas X']
   },
   'Fisher Exact': {
     desc: 'Uji komparatif/asosiasi alternatif dari Chi-Square apabila asumsi nilai harapan gagal terpenuhi pada sampel kecil.',
     req: ['Skala Kategorik', 'Tabel wajib 2x2', 'Ada sel dengan Expected Count &lt;5'],
     spss: 'Analyze > Descriptive Statistics > Crosstabs',
-    examples: [
-      'Perbedaan Kejadian Reaksi Anafilaksis antara Pasien yang Mendapat Kontras Ionik dan Non-Ionik pada Sampel Kecil (n=30) di Instalasi Radiologi RS Fatmawati',
-      'Hubungan Polimorfisme Gen NAT2 dengan Hepatotoksisitas Isoniazid pada Pasien TB di RS Rujukan Kota Semarang (n=28)',
-      'Hubungan Jenis Persalinan dengan Kejadian Asfiksia Neonatorum pada Bayi Prematur di NICU RS Tipe C Kota Cimahi (n=19)'
-    ]
+    examples: ['Perbedaan Kejadian Reaksi Anafilaksis antara Pasien yang Mendapat Kontras Ionik dan Non-Ionik pada Sampel Kecil (n=30) di Instalasi Radiologi RS Fatmawati','Hubungan Polimorfisme Gen NAT2 dengan Hepatotoksisitas Isoniazid pada Pasien TB di RS Rujukan Kota Semarang (n=28)','Hubungan Jenis Persalinan dengan Kejadian Asfiksia Neonatorum pada Bayi Prematur di NICU RS Tipe C Kota Cimahi (n=19)']
   },
   'McNemar': {
     desc: 'Mengevaluasi perbedaan proporsi secara berpasangan (misal: sebelum dan sesudah intervensi).',
     req: ['Kategorik Dikotomis', 'Sifat Berpasangan (Pre-Post)'],
     spss: 'Analyze > Nonparametric Tests > Legacy > 2 Related Samples',
-    examples: [
-      'Perbedaan Proporsi Pengetahuan (Baik/Kurang) Mahasiswa tentang Pencegahan HIV Sebelum dan Sesudah Penyuluhan di Puskesmas Kecamatan Tebet',
-      'Perubahan Status Kepatuhan Cuci Tangan Perawat IGD Sebelum dan Sesudah Pelatihan Hand Hygiene di RS Tipe B Jakarta Selatan',
-      'Perbandingan Status Anemia Ibu Hamil Sebelum dan Sesudah Suplementasi Tablet Fe Selama 90 Hari di Puskesmas Pancoran Mas Depok'
-    ]
+    examples: ['Perbedaan Proporsi Pengetahuan (Baik/Kurang) Mahasiswa tentang Pencegahan HIV Sebelum dan Sesudah Penyuluhan di Puskesmas Kecamatan Tebet','Perubahan Status Kepatuhan Cuci Tangan Perawat IGD Sebelum dan Sesudah Pelatihan Hand Hygiene di RS Tipe B Jakarta Selatan','Perbandingan Status Anemia Ibu Hamil Sebelum dan Sesudah Suplementasi Tablet Fe Selama 90 Hari di Puskesmas Pancoran Mas Depok']
   },
   'Cochran Q': {
     desc: 'Menguji perbedaan proporsi dikotomis pada tiga kondisi berpasangan atau lebih (pengukuran berulang pada subjek yang sama).',
     req: ['Variabel dependen dikotomis (Ya/Tidak)', 'Tiga kondisi berpasangan atau lebih', 'Subjek yang sama diukur berulang'],
     spss: 'Analyze > Nonparametric Tests > Legacy > K Related Samples > Cochran Q',
-    examples: [
-      'Perbedaan Proporsi Kelulusan Mahasiswa Kedokteran pada Ujian Blok Kardiovaskular, Respirasi, dan Gastrointestinal di FK Universitas X',
-      'Perbandingan Tingkat Kepatuhan Kontrol Pasien DM Tipe 2 pada Kunjungan Bulan ke-1, ke-3, dan ke-6 di Puskesmas Kecamatan Jatinegara',
-      'Perbedaan Ketuntasan Imunisasi Bayi pada Imunisasi BCG, DPT-1, dan Campak di Posyandu Kelurahan Cililitan Jakarta Timur'
-    ]
+    examples: ['Perbedaan Proporsi Kelulusan Mahasiswa Kedokteran pada Ujian Blok Kardiovaskular, Respirasi, dan Gastrointestinal di FK Universitas X','Perbandingan Tingkat Kepatuhan Kontrol Pasien DM Tipe 2 pada Kunjungan Bulan ke-1, ke-3, dan ke-6 di Puskesmas Kecamatan Jatinegara','Perbedaan Ketuntasan Imunisasi Bayi pada Imunisasi BCG, DPT-1, dan Campak di Posyandu Kelurahan Cililitan Jakarta Timur']
   },
   'Regresi Logistik': {
     desc: 'Menghitung besarnya probabilitas kejadian serta nilai Odds Ratio (OR) untuk faktor risiko.',
     req: ['Outcome/Dependen wajib Kategorik 2 pilihan (Dikotomis)'],
     spss: 'Analyze > Regression > Binary Logistic',
-    examples: [
-      'Besar Risiko Paparan Asap Rokok di Rumah terhadap Kejadian ISPA pada Balita di Kelurahan Duren Sawit Jakarta Timur: Analisis Odds Ratio',
-      'Faktor Prediktor Kejadian Sepsis Neonatorum Berdasarkan Berat Lahir, Usia Gestasi, dan Jenis Persalinan di NICU RS Tipe A Kota Padang',
-      'Model Prediksi Kelulusan Ujian Kompetensi Kedokteran Berdasarkan IPK, Skor Try Out, dan Keikutsertaan Bimbingan Belajar di FK Universitas X'
-    ]
+    examples: ['Besar Risiko Paparan Asap Rokok di Rumah terhadap Kejadian ISPA pada Balita di Kelurahan Duren Sawit Jakarta Timur: Analisis Odds Ratio','Faktor Prediktor Kejadian Sepsis Neonatorum Berdasarkan Berat Lahir, Usia Gestasi, dan Jenis Persalinan di NICU RS Tipe A Kota Padang','Model Prediksi Kelulusan Ujian Kompetensi Kedokteran Berdasarkan IPK, Skor Try Out, dan Keikutsertaan Bimbingan Belajar di FK Universitas X']
   },
   'Independent T-Test': {
     desc: 'Membandingkan nilai rata-rata (Mean) numerik dari dua kelompok subjek yang terpisah.',
     req: ['Dependen: Numerik', '2 Kelompok Independen', 'Data wajib berdistribusi Normal'],
     spss: 'Analyze > Compare Means > Independent-Samples T Test',
-    examples: [
-      'Perbedaan Rerata Kadar Hemoglobin antara Ibu Hamil Trimester III yang Mendapat Suplementasi Fe-Folat dan Fe Saja di Puskesmas Cipayung Jakarta Timur',
-      'Perbandingan Rerata Lama Rawat Inap Pasien Pneumonia Komunitas yang Mendapat Levofloxacin dan Ceftriaxone di RS Tipe B Tangerang',
-      'Perbedaan Rerata Berat Badan Lahir antara Bayi dari Ibu dengan Anemia dan Ibu Tanpa Anemia di RS Bersalin Kota Medan'
-    ]
+    examples: ['Perbedaan Rerata Kadar Hemoglobin antara Ibu Hamil Trimester III yang Mendapat Suplementasi Fe-Folat dan Fe Saja di Puskesmas Cipayung Jakarta Timur','Perbandingan Rerata Lama Rawat Inap Pasien Pneumonia Komunitas yang Mendapat Levofloxacin dan Ceftriaxone di RS Tipe B Tangerang','Perbedaan Rerata Berat Badan Lahir antara Bayi dari Ibu dengan Anemia dan Ibu Tanpa Anemia di RS Bersalin Kota Medan']
   },
   'Paired T-Test': {
     desc: 'Membandingkan rerata nilai numerik sebelum dan sesudah tindakan pada satu kelompok subjek.',
     req: ['Dependen: Numerik', 'Sifat Berpasangan', 'Data wajib berdistribusi Normal'],
     spss: 'Analyze > Compare Means > Paired-Samples T Test',
-    examples: [
-      'Perbedaan Rerata Tekanan Darah Sistolik Sebelum dan Sesudah Pemberian Jus Mentimun Selama 7 Hari pada Lansia Hipertensi di Posyandu Lansia Kelurahan Cipinang Melayu',
-      'Perbandingan Kadar Glukosa Darah Puasa Pre dan Post Intervensi Diet Mediterania Selama 4 Minggu pada Pasien DM Tipe 2 di Klinik Pratama Bekasi',
-      'Perbedaan Rerata Skor Kecemasan (HARS) Pasien Pre-Operasi Katarak Sebelum dan Sesudah Edukasi Audiovisual di RS Mata Cicendo Bandung'
-    ]
+    examples: ['Perbedaan Rerata Tekanan Darah Sistolik Sebelum dan Sesudah Pemberian Jus Mentimun Selama 7 Hari pada Lansia Hipertensi di Posyandu Lansia Kelurahan Cipinang Melayu','Perbandingan Kadar Glukosa Darah Puasa Pre dan Post Intervensi Diet Mediterania Selama 4 Minggu pada Pasien DM Tipe 2 di Klinik Pratama Bekasi','Perbedaan Rerata Skor Kecemasan (HARS) Pasien Pre-Operasi Katarak Sebelum dan Sesudah Edukasi Audiovisual di RS Mata Cicendo Bandung']
   },
   'Mann-Whitney': {
     desc: 'Alternatif non-parametrik untuk membandingkan median dua kelompok independen.',
     req: ['Numerik Gagal Normal / Ordinal', '2 Kelompok Independen'],
     spss: 'Analyze > Nonparametric Tests > Legacy > 2 Independent Samples',
-    examples: [
-      'Perbedaan Skor Kualitas Hidup (WHOQOL-BREF) antara Pasien Hemodialisis dan Pasien CAPD di Unit Dialisis RS Tipe A Yogyakarta',
-      'Perbandingan Lama Penyembuhan Luka Pasca Sirkumsisi dengan Teknik Klem dan Dorsumsisi pada Anak Usia 6-12 Tahun di Klinik Kecamatan Cilandak',
-      'Perbedaan Skor Derajat Kerusakan Histopatologi Hepar antara Tikus Kontrol dan Kelompok Induksi Parasetamol Dosis Toksik di Laboratorium Farmakologi Universitas X'
-    ]
+    examples: ['Perbedaan Skor Kualitas Hidup (WHOQOL-BREF) antara Pasien Hemodialisis dan Pasien CAPD di Unit Dialisis RS Tipe A Yogyakarta','Perbandingan Lama Penyembuhan Luka Pasca Sirkumsisi dengan Teknik Klem dan Dorsumsisi pada Anak Usia 6-12 Tahun di Klinik Kecamatan Cilandak','Perbedaan Skor Derajat Kerusakan Histopatologi Hepar antara Tikus Kontrol dan Kelompok Induksi Parasetamol Dosis Toksik di Laboratorium Farmakologi Universitas X']
   },
   'Wilcoxon': {
     desc: 'Alternatif non-parametrik untuk uji beda data berpasangan.',
     req: ['Numerik Gagal Normal / Ordinal', 'Sifat Berpasangan'],
     spss: 'Analyze > Nonparametric Tests > Legacy > 2 Related Samples',
-    examples: [
-      'Perbedaan Skor Nyeri (VAS) Pasien Osteoarthritis Lutut Sebelum dan Sesudah Terapi Kompres Jahe Hangat Selama 2 Minggu di Puskesmas Kramat Jati',
-      'Perbandingan Skor Depresi (PHQ-9) Lansia Sebelum dan Sesudah Program Terapi Reminiscence Selama 8 Minggu di Panti Werdha Kota Tangerang',
-      'Perbedaan Jumlah Koloni Bakteri pada Permukaan Meja Operasi Sebelum dan Sesudah Desinfeksi dengan Klorheksidin di Kamar Bedah RS Tipe C Depok'
-    ]
+    examples: ['Perbedaan Skor Nyeri (VAS) Pasien Osteoarthritis Lutut Sebelum dan Sesudah Terapi Kompres Jahe Hangat Selama 2 Minggu di Puskesmas Kramat Jati','Perbandingan Skor Depresi (PHQ-9) Lansia Sebelum dan Sesudah Program Terapi Reminiscence Selama 8 Minggu di Panti Werdha Kota Tangerang','Perbedaan Jumlah Koloni Bakteri pada Permukaan Meja Operasi Sebelum dan Sesudah Desinfeksi dengan Klorheksidin di Kamar Bedah RS Tipe C Depok']
   },
   'One-Way ANOVA': {
     desc: 'Membandingkan rerata nilai numerik pada tiga kelompok independen atau lebih.',
     req: ['Dependen: Numerik', '&gt;2 Kelompok Independen', 'Distribusi Normal &amp; Varians Homogen'],
     spss: 'Analyze > Compare Means > One-Way ANOVA',
-    examples: [
-      'Perbedaan Rerata Diameter Zona Hambat Ekstrak Etanol Daun Kemangi terhadap Escherichia coli pada Konsentrasi 25%, 50%, 75%, dan 100%',
-      'Perbandingan Rerata Kadar MDA Serum Tikus Sprague Dawley pada Kelompok Kontrol, Dosis 250 mg/kgBB, dan Dosis 500 mg/kgBB Ekstrak Temulawak',
-      'Perbedaan Rerata Skor Pengetahuan Gizi Seimbang Siswa SMP yang Mendapat Edukasi dengan Metode Ceramah, Video, dan Permainan Kartu di Kota Tangerang Selatan'
-    ]
+    examples: ['Perbedaan Rerata Diameter Zona Hambat Ekstrak Etanol Daun Kemangi terhadap Escherichia coli pada Konsentrasi 25%, 50%, 75%, dan 100%','Perbandingan Rerata Kadar MDA Serum Tikus Sprague Dawley pada Kelompok Kontrol, Dosis 250 mg/kgBB, dan Dosis 500 mg/kgBB Ekstrak Temulawak','Perbedaan Rerata Skor Pengetahuan Gizi Seimbang Siswa SMP yang Mendapat Edukasi dengan Metode Ceramah, Video, dan Permainan Kartu di Kota Tangerang Selatan']
   },
   'Kruskal-Wallis': {
     desc: 'Alternatif non-parametrik dari One-Way ANOVA untuk membandingkan &gt;2 kelompok.',
     req: ['Numerik Tidak Normal / Ordinal', '&gt;2 Kelompok Independen'],
     spss: 'Analyze > Nonparametric Tests > Legacy > K Independent Samples',
-    examples: [
-      'Perbedaan Skor Derajat Kerusakan Histopatologi Tubulus Ginjal (Skala 0-4) antar Lima Kelompok Perlakuan Ekstrak Herbal pada Tikus Model Nefrotoksik',
-      'Perbandingan Tingkat Kepuasan Pasien (Skala Likert 1-5) terhadap Pelayanan di Empat Puskesmas Kecamatan di Kota Bekasi',
-      'Perbedaan Skor Motivasi Belajar Mahasiswa Kedokteran Tingkat 1, 3, dan 5 di Universitas X dengan Distribusi Data Tidak Normal'
-    ]
+    examples: ['Perbedaan Skor Derajat Kerusakan Histopatologi Tubulus Ginjal (Skala 0-4) antar Lima Kelompok Perlakuan Ekstrak Herbal pada Tikus Model Nefrotoksik','Perbandingan Tingkat Kepuasan Pasien (Skala Likert 1-5) terhadap Pelayanan di Empat Puskesmas Kecamatan di Kota Bekasi','Perbedaan Skor Motivasi Belajar Mahasiswa Kedokteran Tingkat 1, 3, dan 5 di Universitas X dengan Distribusi Data Tidak Normal']
   },
   'Repeated Measures ANOVA': {
     desc: 'Membandingkan rerata numerik pada tiga pengukuran atau lebih dari subjek yang sama, dengan syarat data berdistribusi normal.',
-    req: ['Dependen: Numerik', 'Tiga pengukuran berpasangan atau lebih', 'Distribusi Normal', 'Asumsi sphericity (cek Mauchly\'s Test)'],
+    req: ['Dependen: Numerik', 'Tiga pengukuran berpasangan atau lebih', 'Distribusi Normal', "Asumsi sphericity (cek Mauchly's Test)"],
     spss: 'Analyze > General Linear Model > Repeated Measures',
-    examples: [
-      'Perbedaan Rerata Tekanan Intraokular Pasien Glaukoma pada Minggu ke-0, ke-4, dan ke-8 Terapi Timolol di Poliklinik Mata RS Tipe A Makassar',
-      'Perbandingan Kadar Kortisol Saliva Mahasiswa Kedokteran pada Fase Pre-Ujian, Saat Ujian, dan Post-Ujian Blok Neurologi di Universitas X',
-      'Perbedaan Rerata Berat Badan Tikus Wistar pada Hari ke-0, ke-14, dan ke-28 Pemberian Diet Tinggi Fruktosa'
-    ]
+    examples: ['Perbedaan Rerata Tekanan Intraokular Pasien Glaukoma pada Minggu ke-0, ke-4, dan ke-8 Terapi Timolol di Poliklinik Mata RS Tipe A Makassar','Perbandingan Kadar Kortisol Saliva Mahasiswa Kedokteran pada Fase Pre-Ujian, Saat Ujian, dan Post-Ujian Blok Neurologi di Universitas X','Perbedaan Rerata Berat Badan Tikus Wistar pada Hari ke-0, ke-14, dan ke-28 Pemberian Diet Tinggi Fruktosa']
   },
   'Friedman': {
     desc: 'Alternatif non-parametrik dari Repeated Measures ANOVA untuk data berpasangan tiga kondisi atau lebih yang tidak berdistribusi normal.',
     req: ['Numerik tidak normal atau Ordinal', 'Tiga kondisi berpasangan atau lebih', 'Subjek yang sama diukur berulang'],
     spss: 'Analyze > Nonparametric Tests > Legacy > K Related Samples > Friedman',
-    examples: [
-      'Perbedaan Skor Nyeri (NRS) Pasien Pasca Seksio Sesarea pada Jam ke-6, ke-12, dan ke-24 di Ruang Nifas RS Tipe B Palembang',
-      'Perbandingan Skor Kepuasan Pasien Rawat Jalan terhadap Pelayanan Pendaftaran, Pemeriksaan, dan Farmasi di Puskesmas Kecamatan Matraman Jakarta Timur',
-      'Perbedaan Derajat Inflamasi Histopatologi Mukosa Lambung Tikus pada Pengamatan Hari ke-7, ke-14, dan ke-21 Pasca Induksi Aspirin'
-    ]
+    examples: ['Perbedaan Skor Nyeri (NRS) Pasien Pasca Seksio Sesarea pada Jam ke-6, ke-12, dan ke-24 di Ruang Nifas RS Tipe B Palembang','Perbandingan Skor Kepuasan Pasien Rawat Jalan terhadap Pelayanan Pendaftaran, Pemeriksaan, dan Farmasi di Puskesmas Kecamatan Matraman Jakarta Timur','Perbedaan Derajat Inflamasi Histopatologi Mukosa Lambung Tikus pada Pengamatan Hari ke-7, ke-14, dan ke-21 Pasca Induksi Aspirin']
   },
   'Pearson': {
     desc: 'Mengukur kekuatan dan arah hubungan linear antara dua variabel numerik kontinu.',
     req: ['Keduanya Numerik', 'Keduanya wajib berdistribusi Normal'],
     spss: 'Analyze > Correlate > Bivariate > Pearson',
-    examples: [
-      'Korelasi antara Indeks Massa Tubuh (kg/m2) dengan Tekanan Darah Sistolik pada Pekerja Pabrik Garmen Usia 20-50 Tahun di Kabupaten Purwakarta',
-      'Hubungan antara Durasi Tidur dengan Kadar Kortisol Pagi Hari pada Mahasiswa Tingkat Akhir di Universitas X',
-      'Korelasi antara Asupan Kalori Harian dengan Lingkar Pinggang pada Pasien Rawat Jalan Poli Gizi RS Tipe B Jakarta Timur'
-    ]
+    examples: ['Korelasi antara Indeks Massa Tubuh (kg/m2) dengan Tekanan Darah Sistolik pada Pekerja Pabrik Garmen Usia 20-50 Tahun di Kabupaten Purwakarta','Hubungan antara Durasi Tidur dengan Kadar Kortisol Pagi Hari pada Mahasiswa Tingkat Akhir di Universitas X','Korelasi antara Asupan Kalori Harian dengan Lingkar Pinggang pada Pasien Rawat Jalan Poli Gizi RS Tipe B Jakarta Timur']
   },
   'Spearman': {
     desc: 'Mengukur korelasi monoton antara dua variabel tanpa asumsi linearitas ketat.',
     req: ['Ordinal atau Numerik yang Gagal Normalitas'],
     spss: 'Analyze > Correlate > Bivariate > Spearman',
-    examples: [
-      'Korelasi antara Tingkat Stres (skor) dengan Kualitas Tidur pada Residen Bedah di RS Pendidikan Kota Surabaya',
-      'Hubungan antara Derajat Keparahan Akne Vulgaris dengan Skor Kualitas Hidup Dermatologi (DLQI) pada Remaja di Klinik Kulit Kota Malang',
-      'Korelasi antara Skor Kepatuhan Minum Obat (MMAS-8) dengan Skor Kontrol Asma (ACT) pada Pasien Asma Dewasa di Poliklinik Paru RS Tipe B Denpasar'
-    ]
+    examples: ['Korelasi antara Tingkat Stres (skor) dengan Kualitas Tidur pada Residen Bedah di RS Pendidikan Kota Surabaya','Hubungan antara Derajat Keparahan Akne Vulgaris dengan Skor Kualitas Hidup Dermatologi (DLQI) pada Remaja di Klinik Kulit Kota Malang','Korelasi antara Skor Kepatuhan Minum Obat (MMAS-8) dengan Skor Kontrol Asma (ACT) pada Pasien Asma Dewasa di Poliklinik Paru RS Tipe B Denpasar']
   },
   'Regresi Linear': {
     desc: 'Membangun persamaan untuk memprediksi nilai masa depan suatu variabel numerik kontinu.',
     req: ['Outcome/Dependen: Numerik', 'Nilai residual wajib berdistribusi Normal'],
     spss: 'Analyze > Regression > Linear',
-    examples: [
-      'Prediksi Kadar Hemoglobin Ibu Hamil Trimester III Berdasarkan Asupan Zat Besi Harian di Puskesmas Kecamatan Pasar Minggu Jakarta Selatan',
-      'Model Prediksi Lama Rawat Inap Pasien Demam Berdarah Dengue Berdasarkan Kadar Trombosit Saat Admisi di RS Tipe B Kota Semarang',
-      'Prediksi Skor Fungsi Kognitif (MoCA-INA) Lansia Berdasarkan Durasi Aktivitas Fisik Mingguan di Posyandu Lansia Kecamatan Menteng Jakarta Pusat'
-    ]
+    examples: ['Prediksi Kadar Hemoglobin Ibu Hamil Trimester III Berdasarkan Asupan Zat Besi Harian di Puskesmas Kecamatan Pasar Minggu Jakarta Selatan','Model Prediksi Lama Rawat Inap Pasien Demam Berdarah Dengue Berdasarkan Kadar Trombosit Saat Admisi di RS Tipe B Kota Semarang','Prediksi Skor Fungsi Kognitif (MoCA-INA) Lansia Berdasarkan Durasi Aktivitas Fisik Mingguan di Posyandu Lansia Kecamatan Menteng Jakarta Pusat']
   }
 };
 
-/* ============================================================
-   DECISION TREE LOGIC (FULL TREE, PROGRESS, BREADCRUMB)
-   ============================================================ */
+/* DECISION TREE */
 const dtTree = {
   start: {
     q: 'Apa Tujuan Analisis pada penelitian Anda?',
@@ -810,8 +714,6 @@ const dtTree = {
       {l: 'Membuat Model Prediksi (Kausalitas)', hint: 'Variabel independen memprediksi outcome. Cari OR atau koefisien regresi.', n: 'p_dep'}
     ]
   },
-
-  /* ---- UJI BEDA ---- */
   b_dep: {
     q: 'Apa Skala Pengukuran Variabel Terikat (Dependen) Anda?',
     c: [
@@ -819,8 +721,6 @@ const dtTree = {
       {l: 'Data Numerik (Interval/Rasio)', hint: 'Contoh: kadar Hb, tekanan darah, skor skala nyeri, berat badan.', n: 'b_num_jml'}
     ]
   },
-
-  /* Kategorik -- jumlah kelompok */
   b_kat_jml: {
     q: 'Berapa jumlah kelompok yang dibandingkan?',
     c: [
@@ -849,8 +749,6 @@ const dtTree = {
       {l: 'Independen', hint: 'Tiga kelompok subjek berbeda. Contoh: tiga program pendidikan berbeda.', r: 'Chi-Square'}
     ]
   },
-
-  /* Numerik -- jumlah kelompok */
   b_num_jml: {
     q: 'Berapa jumlah kelompok yang dibandingkan?',
     c: [
@@ -889,19 +787,17 @@ const dtTree = {
   b_num_3_pas_norm: {
     q: 'Berdasarkan Uji Normalitas, apakah data berdistribusi Normal?',
     c: [
-      {l: 'Ya, Normal (p &gt; 0,05)', hint: 'Periksa juga asumsi sphericity dengan Mauchly\'s Test.', r: 'Repeated Measures ANOVA'},
+      {l: 'Ya, Normal (p &gt; 0,05)', hint: "Periksa juga asumsi sphericity dengan Mauchly's Test.", r: 'Repeated Measures ANOVA'},
       {l: 'Tidak Normal (p \u2264 0,05)', hint: 'Alternatif berbasis ranking untuk pengukuran berulang.', r: 'Friedman'}
     ]
   },
   b_num_3_ind_norm: {
     q: 'Berdasarkan Uji Normalitas, apakah data berdistribusi Normal?',
     c: [
-      {l: 'Ya, Normal (p &gt; 0,05)', hint: 'Periksa juga homogenitas varians dengan Levene\'s Test.', r: 'One-Way ANOVA'},
+      {l: 'Ya, Normal (p &gt; 0,05)', hint: "Periksa juga homogenitas varians dengan Levene's Test.", r: 'One-Way ANOVA'},
       {l: 'Tidak Normal (p \u2264 0,05)', hint: 'Alternatif non-parametrik untuk tiga kelompok independen atau lebih.', r: 'Kruskal-Wallis'}
     ]
   },
-
-  /* ---- UJI HUBUNGAN ---- */
   h_dep: {
     q: 'Apa skala pengukuran dari kedua variabel yang dihubungkan?',
     c: [
@@ -930,8 +826,6 @@ const dtTree = {
       {l: 'Tidak (salah satu/keduanya p \u2264 0,05)', hint: 'Minimal satu variabel tidak normal atau datanya ordinal.', r: 'Spearman'}
     ]
   },
-
-  /* ---- UJI PREDIKSI ---- */
   p_dep: {
     q: 'Apa skala pengukuran variabel Outcome (Dependen) dari model Anda?',
     c: [
@@ -941,8 +835,7 @@ const dtTree = {
   }
 };
 
-/* State tracking */
-let currentPath = []; /* [{nodeId, label}] */
+let currentPath = [];
 let stepCount = 0;
 const totalEstimate = 5;
 
@@ -983,10 +876,7 @@ function chooseResult(testId, label) {
 
 function goBack(index) {
   currentPath = currentPath.slice(0, index);
-  if (index === 0) {
-    startTree();
-    return;
-  }
+  if (index === 0) { startTree(); return; }
   const prev = currentPath[index - 1];
   stepCount = index;
   document.getElementById('dt-result-card').style.display = 'none';
@@ -1022,8 +912,6 @@ function showRes(id) {
   document.getElementById('res-desc').innerHTML = d.desc;
   document.getElementById('res-req').innerHTML = d.req.map(r => '<li>' + r + '</li>').join('');
   document.getElementById('res-spss').innerText = d.spss;
-
-  /* Contoh judul */
   const exSec = document.getElementById('res-examples-section');
   const exGrid = document.getElementById('res-examples');
   if (d.examples && d.examples.length) {
@@ -1034,40 +922,33 @@ function showRes(id) {
   } else {
     exSec.style.display = 'none';
   }
-
-  /* Breadcrumb update */
   updateBreadcrumb();
   document.getElementById('dt-result-card').style.display = 'block';
   document.getElementById('dt-progress').textContent = 'Hasil ditemukan';
 }
 
-/* ============================================================
-   LOGIKA TABEL RANGKUMAN (12 BARIS, 6 KOLOM)
-   ============================================================ */
+/* TABEL */
 const tableData = [
-  {t:'Uji Beda',      d:'Kategorik', jml:'2',   pas:'Ya',  p:'-',                     np:'McNemar'},
-  {t:'Uji Beda',      d:'Kategorik', jml:'>2',  pas:'Ya',  p:'-',                     np:'Cochran Q'},
-  {t:'Uji Beda',      d:'Kategorik', jml:'2',   pas:'Tidak', p:'Chi-Square',           np:'Fisher Exact'},
-  {t:'Uji Beda',      d:'Kategorik', jml:'>2',  pas:'Tidak', p:'Chi-Square',           np:'-'},
-  {t:'Uji Beda',      d:'Numerik',   jml:'2',   pas:'Ya',  p:'Paired T-Test',          np:'Wilcoxon'},
-  {t:'Uji Beda',      d:'Numerik',   jml:'2',   pas:'Tidak', p:'Independent T-Test',   np:'Mann-Whitney'},
-  {t:'Uji Beda',      d:'Numerik',   jml:'>2',  pas:'Ya',  p:'Repeated Measures ANOVA', np:'Friedman'},
-  {t:'Uji Beda',      d:'Numerik',   jml:'>2',  pas:'Tidak', p:'One-Way ANOVA',        np:'Kruskal-Wallis'},
-  {t:'Uji Hubungan',  d:'Kategorik', jml:'-',   pas:'-',   p:'Chi-Square / Reg. Logistik', np:'Fisher Exact'},
-  {t:'Uji Hubungan',  d:'Numerik',   jml:'-',   pas:'-',   p:'Pearson',                np:'Spearman'},
-  {t:'Uji Prediksi',  d:'Kategorik', jml:'-',   pas:'-',   p:'Regresi Logistik',       np:'-'},
-  {t:'Uji Prediksi',  d:'Numerik',   jml:'-',   pas:'-',   p:'Regresi Linear',         np:'-'}
+  {t:'Uji Beda', d:'Kategorik', jml:'2',  pas:'Ya',    p:'-',                      np:'McNemar'},
+  {t:'Uji Beda', d:'Kategorik', jml:'>2', pas:'Ya',    p:'-',                      np:'Cochran Q'},
+  {t:'Uji Beda', d:'Kategorik', jml:'2',  pas:'Tidak', p:'Chi-Square',             np:'Fisher Exact'},
+  {t:'Uji Beda', d:'Kategorik', jml:'>2', pas:'Tidak', p:'Chi-Square',             np:'-'},
+  {t:'Uji Beda', d:'Numerik',   jml:'2',  pas:'Ya',    p:'Paired T-Test',          np:'Wilcoxon'},
+  {t:'Uji Beda', d:'Numerik',   jml:'2',  pas:'Tidak', p:'Independent T-Test',     np:'Mann-Whitney'},
+  {t:'Uji Beda', d:'Numerik',   jml:'>2', pas:'Ya',    p:'Repeated Measures ANOVA',np:'Friedman'},
+  {t:'Uji Beda', d:'Numerik',   jml:'>2', pas:'Tidak', p:'One-Way ANOVA',          np:'Kruskal-Wallis'},
+  {t:'Uji Hubungan', d:'Kategorik', jml:'-', pas:'-',  p:'Chi-Square / Reg. Logistik', np:'Fisher Exact'},
+  {t:'Uji Hubungan', d:'Numerik',   jml:'-', pas:'-',  p:'Pearson',                np:'Spearman'},
+  {t:'Uji Prediksi', d:'Kategorik', jml:'-', pas:'-',  p:'Regresi Logistik',       np:'-'},
+  {t:'Uji Prediksi', d:'Numerik',   jml:'-', pas:'-',  p:'Regresi Linear',         np:'-'}
 ];
 
 document.getElementById('matrix-body').innerHTML = tableData.map(r =>
-  '<tr>' +
-  '<td>' + r.t + '</td>' +
-  '<td>' + r.d + '</td>' +
+  '<tr><td>' + r.t + '</td><td>' + r.d + '</td>' +
   '<td style="text-align:center;">' + r.jml + '</td>' +
   '<td style="text-align:center;">' + r.pas + '</td>' +
   '<td style="font-weight:800; color:var(--primary);">' + r.p + '</td>' +
-  '<td style="font-weight:800; color:var(--accent);">' + r.np + '</td>' +
-  '</tr>'
+  '<td style="font-weight:800; color:var(--accent);">' + r.np + '</td></tr>'
 ).join('');
 
 function filterTable() {
@@ -1089,23 +970,55 @@ function sortTable(n) {
       shouldSwitch = false;
       x = rows[i].getElementsByTagName('TD')[n];
       y = rows[i + 1].getElementsByTagName('TD')[n];
-      if (dir === 'asc') {
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) { shouldSwitch = true; break; }
-      } else if (dir === 'desc') {
-        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) { shouldSwitch = true; break; }
-      }
+      if (dir === 'asc') { if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) { shouldSwitch = true; break; } }
+      else if (dir === 'desc') { if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) { shouldSwitch = true; break; } }
     }
-    if (shouldSwitch) {
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true; switchcount++;
-    } else {
-      if (switchcount === 0 && dir === 'asc') { dir = 'desc'; switching = true; }
-    }
+    if (shouldSwitch) { rows[i].parentNode.insertBefore(rows[i + 1], rows[i]); switching = true; switchcount++; }
+    else { if (switchcount === 0 && dir === 'asc') { dir = 'desc'; switching = true; } }
   }
 }
 
 /* Init */
 startTree();
+
+/* GOOGLE SHEETS LOGGING */
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbzobAWqLW1L6EOJJBfRfQGyZ_AtrCExBGge13JvbG9ps9RxicF8UPXP4gJYpYbkuWH5/exec';
+let currentUser = {nama: '', nim: ''};
+
+function sendLog(aksi, detail) {
+  if (!currentUser.nama) return;
+  fetch(GAS_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({nama: currentUser.nama, nim: currentUser.nim, aksi: aksi, detail: detail || ''})
+  }).catch(() => {});
+}
+
+function submitSplash() {
+  const nama = document.getElementById('splash-nama').value.trim();
+  const nim = document.getElementById('splash-nim').value.trim();
+  const errEl = document.getElementById('splash-error');
+  if (!nama || !nim) { errEl.style.display = 'block'; return; }
+  errEl.style.display = 'none';
+  currentUser = {nama, nim};
+  sessionStorage.setItem('sg-nama', nama);
+  sessionStorage.setItem('sg-nim', nim);
+  document.getElementById('splash').style.display = 'none';
+  sendLog('LOGIN', 'Masuk ke aplikasi');
+}
+
+(function() {
+  const n = sessionStorage.getItem('sg-nama');
+  const i = sessionStorage.getItem('sg-nim');
+  if (n && i) { currentUser = {nama: n, nim: i}; document.getElementById('splash').style.display = 'none'; }
+})();
+
+const _origOpenTab = openTab;
+openTab = function(tabId) { _origOpenTab(tabId); sendLog('NAVIGASI', tabId); };
+
+const _origShowRes = showRes;
+showRes = function(id) { _origShowRes(id); sendLog('HASIL_DT', id); };
 </script>
 </body>
 </html>
