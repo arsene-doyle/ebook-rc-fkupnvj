@@ -175,6 +175,84 @@ ul.formal-list li { margin-bottom: 8px; }
   .examples-grid { grid-template-columns: 1fr; }
 }
 
+/* BANNER ARAHAN DECISION TREE */
+.dt-nudge {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: white; border-radius: var(--radius-md); padding: 24px 28px;
+  margin-top: 24px; display: none;
+  animation: fadeIn 0.4s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: var(--shadow-md);
+}
+.dt-nudge-title { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+.dt-nudge-text { font-size: 14px; opacity: 0.9; margin-bottom: 16px; line-height: 1.5; }
+.btn-nudge { background: white; color: var(--primary); border: none; padding: 12px 24px; border-radius: var(--radius-sm); font-family: var(--font); font-size: 14px; font-weight: 800; cursor: pointer; transition: all 0.2s; }
+.btn-nudge:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+/* MODAL SELAMAT LULUS */
+.congrats-modal-overlay {
+  position: fixed; inset: 0; z-index: 700;
+  background: rgba(15,23,42,0.65);
+  display: none; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.congrats-modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+.congrats-modal {
+  background: var(--bg-main); border-radius: var(--radius-lg);
+  padding: 44px 40px; max-width: 560px; width: 100%;
+  box-shadow: 0 25px 50px rgba(15,23,42,0.3);
+  text-align: center;
+}
+.congrats-icon { font-size: 56px; margin-bottom: 16px; }
+.congrats-title { font-size: 24px; font-weight: 800; color: var(--primary); margin-bottom: 10px; letter-spacing: -0.02em; }
+.congrats-sub { font-size: 15px; color: var(--text-muted); margin-bottom: 28px; }
+.congrats-divider { border: none; border-top: 2px solid var(--border); margin: 0 0 24px 0; }
+.congrats-dt-title { font-size: 16px; font-weight: 800; color: var(--text-dark); margin-bottom: 12px; }
+.congrats-dt-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 28px; text-align: left; }
+.congrats-dt-desc strong { color: var(--primary); }
+.btn-congrats { background: var(--primary); color: white; border: none; padding: 16px 32px; border-radius: var(--radius-sm); font-family: var(--font); font-size: 16px; font-weight: 800; cursor: pointer; transition: all 0.2s; width: 100%; box-shadow: 0 4px 6px rgba(30,64,175,0.2); }
+.btn-congrats:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 8px 16px rgba(30,64,175,0.3); }
+
+/* MODAL UAT */
+.uat-modal-overlay {
+  position: fixed; inset: 0; z-index: 600;
+  background: rgba(15,23,42,0.6);
+  display: none; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.uat-modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+.uat-modal {
+  background: var(--bg-main); border-radius: var(--radius-lg);
+  padding: 40px; max-width: 520px; width: 100%;
+  box-shadow: 0 25px 50px rgba(15,23,42,0.3);
+  text-align: center;
+}
+.uat-modal-icon { font-size: 48px; margin-bottom: 16px; }
+.uat-modal-title { font-size: 22px; font-weight: 800; color: var(--text-dark); margin-bottom: 10px; }
+.uat-modal-text { font-size: 15px; color: var(--text-muted); margin-bottom: 28px; line-height: 1.6; }
+.uat-modal-actions { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+.btn-uat-modal { background: var(--accent); color: white; border: none; padding: 14px 32px; border-radius: var(--radius-sm); font-family: var(--font); font-size: 15px; font-weight: 800; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; width: 100%; }
+.btn-uat-modal:hover { background: #047857; transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.btn-uat-modal-dismiss { background: transparent; border: none; color: var(--text-muted); font-family: var(--font); font-size: 13px; font-weight: 600; cursor: pointer; padding: 8px; }
+.btn-uat-modal-dismiss:hover { color: var(--text-dark); }
+
+/* BANNER UAT */
+.uat-banner {
+  position: fixed; bottom: 24px; right: 24px; z-index: 500;
+  background: var(--bg-main); border: 2px solid var(--accent);
+  border-radius: var(--radius-md); padding: 20px 24px;
+  max-width: 340px; box-shadow: var(--shadow-md);
+  animation: slideUp 0.4s cubic-bezier(0.4,0,0.2,1);
+  display: none;
+}
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.uat-banner-title { font-size: 14px; font-weight: 800; color: var(--accent); margin-bottom: 6px; }
+.uat-banner-text { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5; }
+.uat-banner-actions { display: flex; gap: 8px; }
+.btn-uat { background: var(--accent); color: white; border: none; padding: 10px 16px; border-radius: var(--radius-sm); font-family: var(--font); font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; }
+.btn-uat:hover { background: #047857; transform: translateY(-1px); }
+.btn-uat-dismiss { background: transparent; border: 1px solid var(--border); color: var(--text-muted); padding: 10px 14px; border-radius: var(--radius-sm); font-family: var(--font); font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+.btn-uat-dismiss:hover { border-color: var(--text-muted); }
+
 /* SPLASH SCREEN */
 .splash-overlay {
   position: fixed; inset: 0; z-index: 9999;
@@ -214,10 +292,50 @@ ul.formal-list li { margin-bottom: 8px; }
     <div class="splash-title">Selamat Datang</div>
     <div class="splash-sub">Buku Saku Digital Uji Statistik Bivariat<br>FK UPN "Veteran" Jakarta &bull; Research Course</div>
     <input type="text" id="splash-nama" class="splash-input" placeholder="Nama Lengkap" maxlength="100">
-    <input type="text" id="splash-nim" class="splash-input" placeholder="NIM (contoh: 12345678)" maxlength="20">
-    <div class="splash-error" id="splash-error">Nama dan NIM wajib diisi sebelum melanjutkan.</div>
+    <input type="text" id="splash-NRP" class="splash-input" placeholder="NRP (contoh: 12345678)" maxlength="20">
+    <div class="splash-error" id="splash-error">Nama dan NRP wajib diisi sebelum melanjutkan.</div>
     <button class="btn-primary" onclick="submitSplash()" style="width:100%; justify-content:center;">Masuk ke Aplikasi &#x27A1;</button>
-    <div class="splash-note">Data Anda (nama dan NIM) dicatat untuk keperluan monitoring penggunaan media pembelajaran ini.</div>
+    <div class="splash-note">Data Anda (nama dan NRP) dicatat untuk keperluan monitoring penggunaan media pembelajaran ini.</div>
+  </div>
+</div>
+
+<!-- BANNER UAT -->
+<div class="uat-banner" id="uat-banner">
+  <div class="uat-banner-title">&#x1F4CB; Bantu Kami Berkembang</div>
+  <div class="uat-banner-text">Anda telah menjelajahi seluruh fitur StatGuide. Luangkan 3-5 menit untuk mengisi kuesioner penerimaan pengguna (UAT).</div>
+  <div class="uat-banner-actions">
+    <a href="https://forms.gle/pv1RQt8ADiQxPo8u9" target="_blank" class="btn-uat">Isi Kuesioner &#x27A1;</a>
+    <button class="btn-uat-dismiss" onclick="dismissUAT()">Nanti</button>
+  </div>
+</div>
+
+<!-- MODAL SELAMAT LULUS -->
+<div class="congrats-modal-overlay" id="congrats-modal">
+  <div class="congrats-modal">
+    <div class="congrats-icon">&#x1F3C6;</div>
+    <div class="congrats-title">Selamat! Semua Materi Selesai</div>
+    <div class="congrats-sub">Anda telah lulus seluruh kuis validasi dan membuktikan pemahaman konsep dasar statistik bivariat.</div>
+    <hr class="congrats-divider">
+    <div class="congrats-dt-title">&#x1F9ED; Langkah Berikutnya: Decision Tree</div>
+    <div class="congrats-dt-desc">
+      Decision Tree adalah fitur utama StatGuide. Anda akan menjawab <strong>4-5 pertanyaan singkat</strong> tentang karakteristik data skripsi Anda -- mulai dari tujuan analisis, skala pengukuran, jumlah kelompok, desain sampel, hingga hasil uji normalitas.<br><br>
+      Di akhir alur, sistem akan merekomendasikan <strong>uji statistik yang paling tepat</strong> untuk penelitian Anda, lengkap dengan syarat penggunaan, prosedur di SPSS, dan contoh judul yang relevan.<br><br>
+      <strong>Tidak perlu menebak -- jawab saja pertanyaannya satu per satu.</strong>
+    </div>
+    <button class="btn-congrats" onclick="closeCongrats()">Mulai Decision Tree &#x27A1;</button>
+  </div>
+</div>
+
+<!-- MODAL UAT -->
+<div class="uat-modal-overlay" id="uat-modal">
+  <div class="uat-modal">
+    <div class="uat-modal-icon">&#x1F4CA;</div>
+    <div class="uat-modal-title">Satu Langkah Lagi!</div>
+    <div class="uat-modal-text">Anda telah mencoba Decision Tree StatGuide. Bantu kami meningkatkan aplikasi ini dengan mengisi kuesioner singkat -- hanya 3-5 menit, anonim, dan sangat berarti untuk pengembangan media pembelajaran ini.</div>
+    <div class="uat-modal-actions">
+      <a href="https://forms.gle/pv1RQt8ADiQxPo8u9" target="_blank" class="btn-uat-modal" onclick="dismissUATModal()">Isi Kuesioner Sekarang &#x27A1;</a>
+      <button class="btn-uat-modal-dismiss" onclick="dismissUATModal()">Lewati untuk saat ini</button>
+    </div>
   </div>
 </div>
 
@@ -231,9 +349,8 @@ ul.formal-list li { margin-bottom: 8px; }
       <button class="nav-btn active" onclick="openTab('beranda')" id="nav-beranda">1. Beranda</button>
       <button class="nav-btn" onclick="openTab('petunjuk')" id="nav-petunjuk">2. Petunjuk</button>
       <button class="nav-btn" onclick="openTab('materi')" id="nav-materi">3. Materi Konsep</button>
-      <button class="nav-btn" onclick="openTab('alur')" id="nav-alur" disabled>4. Bagan Alur &#x1F512;</button>
-      <button class="nav-btn" onclick="openTab('dt')" id="nav-dt" disabled>5. Decision Tree &#x1F512;</button>
-      <button class="nav-btn" onclick="openTab('tabel')" id="nav-tabel" disabled>6. Cheat Sheet &#x1F512;</button>
+      <button class="nav-btn" onclick="openTab('dt')" id="nav-dt" disabled>4. Decision Tree &#x1F512;</button>
+      <button class="nav-btn" onclick="openTab('tabel')" id="nav-tabel" disabled>5. Cheat Sheet &#x1F512;</button>
     </div>
     <div class="topnav-actions">
       <button class="btn-darkmode" onclick="toggleDark()" id="btn-dm">&#9790; Dark</button>
@@ -423,55 +540,17 @@ ul.formal-list li { margin-bottom: 8px; }
         </div>
       </div>
     </div>
-  </div>
 
-  <div id="alur" class="tab-pane">
-    <div class="page-header">
-      <div class="page-title">Bagan Alur Penentuan Uji Statistik</div>
-      <div class="page-subtitle">Peta navigasi struktur logika makro pembagian uji.</div>
-    </div>
-    <div class="content-box">
-      <div class="tree-container">
-        <div class="tree">
-          <ul>
-            <li>
-              <div class="tree-node"><b>Tujuan Analisis?</b></div>
-              <ul>
-                <li>
-                  <div class="tree-node">Uji Beda<br>(Komparasi)</div>
-                  <ul>
-                    <li>
-                      <div class="tree-node">Numerik</div>
-                      <ul>
-                        <li><div class="tree-node">Independen</div><ul><li><div class="tree-node result">Ind. T-Test /<br>Mann-Whitney</div></li></ul></li>
-                        <li><div class="tree-node">Berpasangan</div><ul><li><div class="tree-node result">Paired T-Test /<br>Wilcoxon</div></li></ul></li>
-                      </ul>
-                    </li>
-                    <li>
-                      <div class="tree-node">Kategorik</div>
-                      <ul><li><div class="tree-node result">Chi-Square /<br>Fisher / McNemar</div></li></ul>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <div class="tree-node">Hubungan /<br>Prediksi</div>
-                  <ul>
-                    <li><div class="tree-node">Korelasi</div><ul><li><div class="tree-node result">Pearson /<br>Spearman</div></li></ul></li>
-                    <li><div class="tree-node">Prediksi</div><ul><li><div class="tree-node result">Regresi Linear /<br>Regresi Logistik</div></li></ul></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
 
   <div id="dt" class="tab-pane">
     <div class="page-header">
       <div class="page-title">Algoritma Decision Tree</div>
       <div class="page-subtitle">Jawab pertanyaan secara berurutan sesuai karakteristik data skripsi Anda.</div>
+    </div>
+    <div class="content-box" style="border-left: 4px solid var(--primary); background: var(--primary-light);">
+      <h3 style="margin-bottom: 10px;">Cara Menggunakan Decision Tree</h3>
+      <p style="color: var(--text-dark); font-size: 15px; margin-bottom: 0;">Anda akan menjawab <strong>4-5 pertanyaan singkat</strong> tentang karakteristik data skripsi Anda -- mulai dari tujuan analisis, skala pengukuran variabel dependen, jumlah kelompok, desain sampel, hingga hasil uji normalitas. Di akhir alur, sistem akan merekomendasikan <strong>uji statistik yang paling tepat</strong> untuk penelitian Anda, lengkap dengan syarat penggunaan, prosedur di SPSS, dan contoh judul penelitian yang relevan. Tidak perlu menebak -- jawab saja pertanyaannya satu per satu.</p>
     </div>
     <div class="dt-card">
       <div id="dt-progress" class="dt-progress"></div>
@@ -507,10 +586,53 @@ ul.formal-list li { margin-bottom: 8px; }
 
   <div id="tabel" class="tab-pane">
     <div class="page-header">
-      <div class="page-title">Matriks Komparatif Uji Bivariat</div>
-      <div class="page-subtitle">Klik header kolom untuk menyortir data atau gunakan pencarian.</div>
+      <div class="page-title">Cheat Sheet &amp; Bagan Alur</div>
+      <div class="page-subtitle">Referensi cepat untuk konfirmasi pilihan uji statistik Anda.</div>
     </div>
+
+    <!-- BAGAN ALUR (dipindah ke sini) -->
+    <div class="content-box">
+      <h3>Bagan Alur Penentuan Uji Statistik</h3>
+      <p style="color:var(--text-muted); font-size:14px; margin-bottom:16px;">Peta navigasi struktur logika makro pembagian uji.</p>
+      <div class="tree-container">
+        <div class="tree">
+          <ul>
+            <li>
+              <div class="tree-node"><b>Tujuan Analisis?</b></div>
+              <ul>
+                <li>
+                  <div class="tree-node">Uji Beda<br>(Komparasi)</div>
+                  <ul>
+                    <li>
+                      <div class="tree-node">Numerik</div>
+                      <ul>
+                        <li><div class="tree-node">Independen</div><ul><li><div class="tree-node result">Ind. T-Test /<br>Mann-Whitney</div></li></ul></li>
+                        <li><div class="tree-node">Berpasangan</div><ul><li><div class="tree-node result">Paired T-Test /<br>Wilcoxon</div></li></ul></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <div class="tree-node">Kategorik</div>
+                      <ul><li><div class="tree-node result">Chi-Square /<br>Fisher / McNemar</div></li></ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <div class="tree-node">Hubungan /<br>Prediksi</div>
+                  <ul>
+                    <li><div class="tree-node">Korelasi</div><ul><li><div class="tree-node result">Pearson /<br>Spearman</div></li></ul></li>
+                    <li><div class="tree-node">Prediksi</div><ul><li><div class="tree-node result">Regresi Linear /<br>Regresi Logistik</div></li></ul></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- MATRIKS TABEL -->
     <div class="content-box" style="padding: 24px;">
+      <h3 style="margin-bottom:16px;">Matriks Komparatif Uji Bivariat</h3>
       <div class="table-controls">
         <input type="text" id="table-search" class="search-input" placeholder="&#x1F50D; Cari nama uji atau karakteristik..." onkeyup="filterTable()">
         <button class="btn-primary btn-cetak" onclick="window.print()" style="margin-top:0;">&#x1F5A8; Cetak Cheat Sheet</button>
@@ -594,14 +716,18 @@ function checkWizard(stepNum, isCorrect, btnEl) {
 }
 
 function unlockApp() {
-  ['alur', 'dt', 'tabel'].forEach(id => {
+  ['dt', 'tabel'].forEach(id => {
     const btn = document.getElementById('nav-' + id);
     btn.disabled = false;
     btn.innerText = btn.innerText.replace(' \uD83D\uDD12', '');
   });
-  alert('Selamat! Uji validasi Anda berhasil. Akses menuju Bagan Alur, Decision Tree, dan Cheat Sheet telah dibuka secara penuh.');
-  openTab('alur');
+  document.getElementById('congrats-modal').classList.add('active');
   startTree();
+}
+
+function closeCongrats() {
+  document.getElementById('congrats-modal').classList.remove('active');
+  openTab('dt');
 }
 
 /* DATABASE 15 UJI */
@@ -983,7 +1109,7 @@ startTree();
 
 /* GOOGLE SHEETS LOGGING */
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbwfh0Di1a3RKVQvdFD_iWZxyywGzpkMKkrKjwBqZD_JoQHAyxt36OSF487j5geiWAWJ/exec';
-let currentUser = {nama: '', nim: ''};
+let currentUser = {nama: '', NRP: ''};
 
 /* Milestone tracker -- cegah duplikasi pengiriman */
 const milestoneReached = {
@@ -1001,7 +1127,7 @@ function sendLog(aksi, detail, milestone) {
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
       nama: currentUser.nama,
-      nim: currentUser.nim,
+      NRP: currentUser.NRP,
       aksi: aksi,
       detail: detail || '',
       milestone: milestone || ''
@@ -1017,21 +1143,21 @@ function checkMilestone(key, aksi, detail) {
 
 function submitSplash() {
   const nama = document.getElementById('splash-nama').value.trim();
-  const nim = document.getElementById('splash-nim').value.trim();
+  const NRP = document.getElementById('splash-NRP').value.trim();
   const errEl = document.getElementById('splash-error');
-  if (!nama || !nim) { errEl.style.display = 'block'; return; }
+  if (!nama || !NRP) { errEl.style.display = 'block'; return; }
   errEl.style.display = 'none';
-  currentUser = {nama, nim};
+  currentUser = {nama, NRP};
   sessionStorage.setItem('sg-nama', nama);
-  sessionStorage.setItem('sg-nim', nim);
+  sessionStorage.setItem('sg-NRP', NRP);
   document.getElementById('splash').style.display = 'none';
   sendLog('LOGIN', 'Masuk ke aplikasi', '');
 }
 
 (function() {
   const n = sessionStorage.getItem('sg-nama');
-  const i = sessionStorage.getItem('sg-nim');
-  if (n && i) { currentUser = {nama: n, nim: i}; document.getElementById('splash').style.display = 'none'; }
+  const i = sessionStorage.getItem('sg-NRP');
+  if (n && i) { currentUser = {nama: n, NRP: i}; document.getElementById('splash').style.display = 'none'; }
 })();
 
 /* Patch unlockApp -- milestone materi selesai */
@@ -1047,16 +1173,40 @@ openTab = function(tabId) {
   _origOpenTab(tabId);
   sendLog('NAVIGASI', tabId, '');
   if (tabId === 'alur') checkMilestone('bagan_alur_dibuka', 'MILESTONE', 'Membuka Bagan Alur');
-  if (tabId === 'tabel') checkMilestone('cheat_sheet_dibuka', 'MILESTONE', 'Membuka Cheat Sheet');
+  if (tabId === 'tabel') {
+    checkMilestone('cheat_sheet_dibuka', 'MILESTONE', 'Membuka Cheat Sheet');
+  }
 };
 
-/* Patch showRes -- milestone decision tree dicoba */
+/* Patch showRes -- milestone decision tree dicoba + tampilkan modal UAT */
 const _origShowRes = showRes;
 showRes = function(id) {
   _origShowRes(id);
   sendLog('HASIL_DT', id, '');
   checkMilestone('decision_tree_dicoba', 'MILESTONE', 'Menyelesaikan Decision Tree: ' + id);
+  setTimeout(showUATModal, 4000);
 };
+/* UAT BANNER (lama, dipertahankan tapi tidak dipakai aktif) */
+function showUATBanner() {
+  if (sessionStorage.getItem('sg-uat-dismissed')) return;
+  document.getElementById('uat-banner').style.display = 'block';
+}
+
+function dismissUAT() {
+  document.getElementById('uat-banner').style.display = 'none';
+  sessionStorage.setItem('sg-uat-dismissed', '1');
+}
+
+/* UAT MODAL */
+function showUATModal() {
+  if (sessionStorage.getItem('sg-uat-dismissed')) return;
+  document.getElementById('uat-modal').classList.add('active');
+}
+
+function dismissUATModal() {
+  document.getElementById('uat-modal').classList.remove('active');
+  sessionStorage.setItem('sg-uat-dismissed', '1');
+}
 </script>
 </body>
 </html>
