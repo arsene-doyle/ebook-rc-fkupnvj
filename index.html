@@ -235,6 +235,20 @@ ul.formal-list li { margin-bottom: 8px; }
 .btn-uat-modal-dismiss { background: transparent; border: none; color: var(--text-muted); font-family: var(--font); font-size: 13px; font-weight: 600; cursor: pointer; padding: 8px; }
 .btn-uat-modal-dismiss:hover { color: var(--text-dark); }
 
+/* BANNER PROGRESS PERSISTEN */
+.progress-bar-wrap {
+  background: var(--bg-main); border-bottom: 1px solid var(--border);
+  padding: 8px 24px; display: none;
+  transition: background 0.3s, border-color 0.3s;
+}
+.progress-bar-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.progress-label { font-size: 13px; font-weight: 700; color: var(--text-muted); white-space: nowrap; }
+.progress-steps { display: flex; gap: 8px; flex: 1; flex-wrap: wrap; }
+.progress-step { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 20px; border: 1px solid var(--border); color: var(--text-muted); background: var(--bg-soft); transition: all 0.3s; white-space: nowrap; }
+.progress-step.done { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
+.progress-step.done::before { content: '\u2713 '; }
+.progress-step.pending::before { content: '\u25CB '; }
+
 /* BANNER UAT */
 .uat-banner {
   position: fixed; bottom: 24px; right: 24px; z-index: 500;
@@ -292,10 +306,10 @@ ul.formal-list li { margin-bottom: 8px; }
     <div class="splash-title">Selamat Datang</div>
     <div class="splash-sub">Buku Saku Digital Uji Statistik Bivariat<br>FK UPN "Veteran" Jakarta &bull; Research Course</div>
     <input type="text" id="splash-nama" class="splash-input" placeholder="Nama Lengkap" maxlength="100">
-    <input type="text" id="splash-NRP" class="splash-input" placeholder="NRP (contoh: 12345678)" maxlength="20">
-    <div class="splash-error" id="splash-error">Nama dan NRP wajib diisi sebelum melanjutkan.</div>
+    <input type="text" id="splash-nim" class="splash-input" placeholder="NIM (contoh: 12345678)" maxlength="20">
+    <div class="splash-error" id="splash-error">Nama dan NIM wajib diisi sebelum melanjutkan.</div>
     <button class="btn-primary" onclick="submitSplash()" style="width:100%; justify-content:center;">Masuk ke Aplikasi &#x27A1;</button>
-    <div class="splash-note">Data Anda (nama dan NRP) dicatat untuk keperluan monitoring penggunaan media pembelajaran ini.</div>
+    <div class="splash-note">Data Anda (nama dan NIM) dicatat untuk keperluan monitoring penggunaan media pembelajaran ini.</div>
   </div>
 </div>
 
@@ -358,6 +372,18 @@ ul.formal-list li { margin-bottom: 8px; }
     </div>
   </div>
 </nav>
+
+<!-- BANNER PROGRESS -->
+<div class="progress-bar-wrap" id="progress-bar-wrap">
+  <div class="progress-bar-inner">
+    <div class="progress-label">Progres Anda:</div>
+    <div class="progress-steps">
+      <div class="progress-step pending" id="ps-materi">Materi Selesai</div>
+      <div class="progress-step pending" id="ps-dt">Decision Tree Dicoba</div>
+      <div class="progress-step pending" id="ps-cheat">Cheat Sheet Dibuka</div>
+    </div>
+  </div>
+</div>
 
 <main class="main-content">
 
@@ -1109,7 +1135,7 @@ startTree();
 
 /* GOOGLE SHEETS LOGGING */
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbwfh0Di1a3RKVQvdFD_iWZxyywGzpkMKkrKjwBqZD_JoQHAyxt36OSF487j5geiWAWJ/exec';
-let currentUser = {nama: '', NRP: ''};
+let currentUser = {nama: '', nim: ''};
 
 /* Milestone tracker -- cegah duplikasi pengiriman */
 const milestoneReached = {
@@ -1127,7 +1153,7 @@ function sendLog(aksi, detail, milestone) {
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
       nama: currentUser.nama,
-      NRP: currentUser.NRP,
+      nim: currentUser.nim,
       aksi: aksi,
       detail: detail || '',
       milestone: milestone || ''
@@ -1143,21 +1169,21 @@ function checkMilestone(key, aksi, detail) {
 
 function submitSplash() {
   const nama = document.getElementById('splash-nama').value.trim();
-  const NRP = document.getElementById('splash-NRP').value.trim();
+  const nim = document.getElementById('splash-nim').value.trim();
   const errEl = document.getElementById('splash-error');
-  if (!nama || !NRP) { errEl.style.display = 'block'; return; }
+  if (!nama || !nim) { errEl.style.display = 'block'; return; }
   errEl.style.display = 'none';
-  currentUser = {nama, NRP};
+  currentUser = {nama, nim};
   sessionStorage.setItem('sg-nama', nama);
-  sessionStorage.setItem('sg-NRP', NRP);
+  sessionStorage.setItem('sg-nim', nim);
   document.getElementById('splash').style.display = 'none';
   sendLog('LOGIN', 'Masuk ke aplikasi', '');
 }
 
 (function() {
   const n = sessionStorage.getItem('sg-nama');
-  const i = sessionStorage.getItem('sg-NRP');
-  if (n && i) { currentUser = {nama: n, NRP: i}; document.getElementById('splash').style.display = 'none'; }
+  const i = sessionStorage.getItem('sg-nim');
+  if (n && i) { currentUser = {nama: n, nim: i}; document.getElementById('splash').style.display = 'none'; }
 })();
 
 /* Patch unlockApp -- milestone materi selesai */
@@ -1165,6 +1191,8 @@ const _origUnlockApp = unlockApp;
 unlockApp = function() {
   _origUnlockApp();
   checkMilestone('materi_selesai', 'MILESTONE', 'Lulus semua 4 kuis materi');
+  progressState.materi_selesai = true;
+  updateProgressBar();
 };
 
 /* Patch openTab -- milestone bagan alur dan cheat sheet */
@@ -1175,6 +1203,8 @@ openTab = function(tabId) {
   if (tabId === 'alur') checkMilestone('bagan_alur_dibuka', 'MILESTONE', 'Membuka Bagan Alur');
   if (tabId === 'tabel') {
     checkMilestone('cheat_sheet_dibuka', 'MILESTONE', 'Membuka Cheat Sheet');
+    progressState.cheat_sheet_dibuka = true;
+    updateProgressBar();
   }
 };
 
@@ -1184,9 +1214,37 @@ showRes = function(id) {
   _origShowRes(id);
   sendLog('HASIL_DT', id, '');
   checkMilestone('decision_tree_dicoba', 'MILESTONE', 'Menyelesaikan Decision Tree: ' + id);
+  progressState.decision_tree_dicoba = true;
+  updateProgressBar();
   setTimeout(showUATModal, 4000);
 };
-/* UAT BANNER (lama, dipertahankan tapi tidak dipakai aktif) */
+
+/* PROGRESS BAR */
+const progressState = {
+  materi_selesai: false,
+  decision_tree_dicoba: false,
+  cheat_sheet_dibuka: false
+};
+
+function updateProgressBar() {
+  document.getElementById('progress-bar-wrap').style.display = 'block';
+  const map = {
+    materi_selesai: 'ps-materi',
+    decision_tree_dicoba: 'ps-dt',
+    cheat_sheet_dibuka: 'ps-cheat'
+  };
+  Object.keys(map).forEach(key => {
+    const el = document.getElementById(map[key]);
+    if (progressState[key]) {
+      el.classList.remove('pending');
+      el.classList.add('done');
+    }
+  });
+  const allDone = Object.values(progressState).every(v => v);
+  window.onbeforeunload = allDone ? null : function(e) { e.preventDefault(); e.returnValue = ''; };
+}
+
+/* UAT BANNER */
 function showUATBanner() {
   if (sessionStorage.getItem('sg-uat-dismissed')) return;
   document.getElementById('uat-banner').style.display = 'block';
